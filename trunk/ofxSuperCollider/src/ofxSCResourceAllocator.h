@@ -1,11 +1,15 @@
-/*
- *  ofxSCResourceAllocator.h
- *  openFrameworks
+/*-----------------------------------------------------------------------------
  *
- *  Created by Daniel Jones on 05/11/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
  *
- */
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
 #include <vector>
 
@@ -25,8 +29,7 @@ public:
 	int size;
 	
 	// pointer to next resource in free list
-	ofxSCResource *next;
-	
+	ofxSCResource *next;	
 };
 
 class ofxSCResourceAllocator

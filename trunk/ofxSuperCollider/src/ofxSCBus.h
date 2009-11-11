@@ -1,14 +1,17 @@
-/*
- *  ofxSCBus.h
- *  openFrameworks
+/*-----------------------------------------------------------------------------
  *
- *  Created by Daniel Jones on 05/11/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
  *
- */
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
-#ifndef _OFXSCBUS_H
-#define _OFXSCBUS_H
+#pragma once
 
 #include "ofxSuperCollider.h"
 
@@ -26,5 +29,3 @@ public:
 	int channels;
 	
 };
-
-#endif

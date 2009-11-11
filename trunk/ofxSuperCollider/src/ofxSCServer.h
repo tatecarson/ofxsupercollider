@@ -1,14 +1,17 @@
-/*
- *  ofxSCServer.h
- *  openFrameworks
+/*-----------------------------------------------------------------------------
  *
- *  Created by Daniel Jones on 29/06/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
  *
- */
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
-#ifndef _OFXSCSERVER_H
-#define _OFXSCSERVER_H
+#pragma once
 
 #include <vector>
 
@@ -19,7 +22,6 @@ class ofxSCServer
 {
 public:	
 	ofxSCServer(string hostname, unsigned int port);
-//	ofxSCServer();
 	~ofxSCServer();
 
 	ofxOscSender osc;
@@ -39,6 +41,4 @@ protected:
 	string hostname;
 	unsigned int port;
 };
-
-#endif
 

@@ -1,11 +1,15 @@
-/*
- *  ofxSCResourceAllocator.cpp
- *  openFrameworks
+/*-----------------------------------------------------------------------------
  *
- *  Created by Daniel Jones on 05/11/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
  *
- */
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
 #include "ofxSCResourceAllocator.h"
 
@@ -14,9 +18,6 @@ ofxSCResourceAllocator::ofxSCResourceAllocator(int capacity)
 	this->capacity = capacity;
 	this->pos = 0;
 	
-//	for (int i = 0; i < free_lists.size(); i++)
-//		free_lists[i] = NULL;
-
 	this->resources.reserve(capacity);
 	for (int i = 0; i < capacity; i++)
 		this->resources[i] = NULL;
