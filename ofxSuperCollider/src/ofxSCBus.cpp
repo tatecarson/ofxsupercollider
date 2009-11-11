@@ -1,11 +1,15 @@
-/*
- *  ofxSCBus.cpp
- *  openFrameworks
+/*-----------------------------------------------------------------------------
  *
- *  Created by Daniel Jones on 05/11/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
  *
- */
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
 #include "ofxSCBus.h"
 
@@ -27,6 +31,4 @@ ofxSCBus::ofxSCBus(int rate, int channels, ofxSCServer *server)
 	{
 		this->index = server->allocatorBusAudio->alloc(this->channels);
 	}
-
-//	fprintf(stderr, "got bus allocated, index %d\n", this->index);
 }

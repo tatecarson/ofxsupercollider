@@ -1,26 +1,17 @@
-/*
- 
- Copyright 2009 Daniel Jones <dan@erase.net>
- Distributed under the terms of the GNU Lesser General Public License v3
- 
- This file is part of the ofxSuperCollider openFrameworks OSC addon.
- 
- ofxSuperCollider is free software: you can redistribute it and/or modify
- it under the terms of the GNU Lesser General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
- 
- ofxSuperCollider is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- 
- You should have received a copy of the GNU Lesser General Public License
- along with ofxSuperCollider.  If not, see <http://www.gnu.org/licenses/>.
- */
+/*-----------------------------------------------------------------------------
+ *
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
+ *
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
-#ifndef _OFXSCSYNTH_H
-#define _OFXSCSYNTH_H
+#pragma once
 
 #include <vector>
 #include <tr1/unordered_map>
@@ -53,7 +44,3 @@ protected:
 	string name;
 	dictionary args;
 };
-
-
-#endif
-

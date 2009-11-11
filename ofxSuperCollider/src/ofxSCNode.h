@@ -1,22 +1,23 @@
-/*
- *  ofxSCNode.h
- *  openFrameworks
+/*-----------------------------------------------------------------------------
  *
- *  Created by Daniel Jones on 29/06/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
  *
- */
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
-#ifndef _OFXSCNODE_H
-#define _OFXSCNODE_H
+#pragma once
 
 #include <vector>
 #include "ofxOsc.h"
 #include "ofxSCServer.h"
-//#include "ofxSCGroup.h"
 
 class ofxSCGroup;
-
 
 
 class ofxSCNode
@@ -51,6 +52,3 @@ protected:
 	ofxSCServer *server;
 
 };
-
-#endif
-

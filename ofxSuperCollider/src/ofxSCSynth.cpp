@@ -1,10 +1,15 @@
-/*
- *  ofxSynth.cpp
- *  openFrameworks
+/*-----------------------------------------------------------------------------
  *
- *  Created by Daniel Jones on 29/06/2009.
+ * ofxSuperCollider: a SuperCollider control addon for openFrameworks.
  *
- */
+ * Copyright (c) 2009 Daniel Jones.
+ *
+ *	 <http://www.erase.net/>
+ *
+ * Distributed under the MIT License.
+ * For more information, see ofxSuperCollider.h.
+ *
+ *---------------------------------------------------------------------------*/
 
 #include "ofxSCSynth.h"
 
@@ -30,7 +35,6 @@ void ofxSCSynth::create(int position, int groupID)
 	
 	m.setAddress("/s_new");
 	m.addStringArg(name.c_str());
-	fprintf(stderr, "creating %s\n", name.c_str());
 	m.addIntArg(nodeID);
 	m.addIntArg(position);
 	m.addIntArg(groupID);
@@ -41,9 +45,7 @@ void ofxSCSynth::create(int position, int groupID)
 	{
 		string key = it->first;
 		float value = it->second;
-		
-//		fprintf(stderr, "got %s - %.1f\n", key.c_str(), value);
-		
+
 		m.clear();
 		m.setAddress("/n_set");
 		m.addIntArg(nodeID);
