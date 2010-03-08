@@ -12,6 +12,10 @@
  *---------------------------------------------------------------------------*/
 
 #include "ofxSCServer.h"
+#include "ofxSCBuffer.h"
+#include "ofxOsc.h"
+
+#define LISTEN_PORT 57150
 
 ofxSCServer *ofxSCServer::plocal = NULL;
 
@@ -29,7 +33,11 @@ ofxSCServer::ofxSCServer(string hostname = "localhost", unsigned int port = 5711
 	this->hostname = hostname;
 	this->port = port;
 
+#ifdef _ofxOscSENDERRECEIVER_H		
+	osc.setup(LISTEN_PORT, hostname, port);
+#else
 	osc.setup(hostname, port);
+#endif
 	
 	allocatorBusAudio = new ofxSCResourceAllocator(512);
 	allocatorBusAudio->pos = 64;
@@ -55,10 +63,65 @@ ofxSCServer *ofxSCServer::local()
 	return plocal;
 }
 
+void ofxSCServer::process()
+{
+#ifdef _ofxOscSENDERRECEIVER_H			
+	while(osc.hasWaitingMessages())
+	{
+		ofxOscMessage m;
+		osc.getNextMessage(&m);
+		printf("** got OSC! %s\n", m.getAddress().c_str());
+		
+		
+		/*-----------------------------------------------------------------------------
+		 * /done
+		 *  - buffer read completed
+		 /*---------------------------------------------------------------------------*/
+		if (m.getAddress() == "/done")
+		{
+			string cmd = m.getArgAsString(0);
+			int index = m.getArgAsInt32(1);
+			printf("** buffer read completed, ID %d\n", index);
+			buffers[index]->ready = true;
+		}
+
+		/*-----------------------------------------------------------------------------
+		 * /b_info
+		 *  - information on buffer size and channels
+		/*---------------------------------------------------------------------------*/
+		else if (m.getAddress() == "/b_info")
+		{
+			int index = m.getArgAsInt32(0);
+			buffers[index]->frames = m.getArgAsInt32(1);
+			buffers[index]->channels = m.getArgAsInt32(2);
+			buffers[index]->sampleRate = m.getArgAsFloat(3);
+			buffers[index]->ready = true;			
+		}
+		
+		// buffer alloc/read failed
+		else if (m.getAddress() == "/fail")
+		{
+		}
+	}
+#else
+	fprintf(stderr, "This version of ofxOsc does not have support for sender/receive objects. Please update to enable receiving responses from SuperCollider.\n");
+#endif
+}
+
 void ofxSCServer::notify()
 {
 	ofxOscMessage m;
 	m.setAddress("/notify");
 	m.addIntArg(1);
 	osc.sendMessage(m);
+}
+
+void ofxSCServer::sendMsg(ofxOscMessage& m)
+{
+	osc.sendMessage(m);
+}
+
+void ofxSCServer::sendBundle(ofxOscBundle& b)
+{
+	osc.sendBundle(b);
 }

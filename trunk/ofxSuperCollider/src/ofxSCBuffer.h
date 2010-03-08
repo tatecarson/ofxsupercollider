@@ -16,18 +16,33 @@
 #include "ofxSuperCollider.h"
 #include "ofxSCServer.h"
 
-
-class ofxSCBus
+class ofxSCBuffer
 {
 	
 public:
-	ofxSCBus(int rate = RATE_AUDIO, int channels = 2, ofxSCServer *server = ofxSCServer::local());
+	ofxSCBuffer(int frames = 0, int channels = 0, ofxSCServer *server = ofxSCServer::local());
+	
+	void read(char *path);
+	void query();
+	void alloc();
+	
+//	void write(...);
+//	void close();
+	
+	void free();
+	
+//	set, setn, get, getn, zero...
 	
 	static int id_base;
 	
 	ofxSCServer *server;
-	int rate;
+
 	int index;
+	int frames;
 	int channels;
+	float sampleRate;
+	bool ready;
+	
+	char *path;
 	
 };

@@ -19,7 +19,6 @@
 
 class ofxSCGroup;
 
-
 class ofxSCNode
 {
 public:	

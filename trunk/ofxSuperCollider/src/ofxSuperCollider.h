@@ -34,8 +34,14 @@ enum rates
 	RATE_CONTROL
 };
 
+#include "ofxOsc.h"
+
+#include "ofxSCResourceAllocator.h"
+
+#include "ofxSCServer.h"
+#include "ofxSCNode.h"
+#include "ofxSCServer.h"
 #include "ofxSCSynth.h"
 #include "ofxSCGroup.h"
-#include "ofxSCServer.h"
 #include "ofxSCBus.h"
-
+#include "ofxSCBuffer.h"
