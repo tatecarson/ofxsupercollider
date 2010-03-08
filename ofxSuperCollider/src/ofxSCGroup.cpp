@@ -24,7 +24,7 @@ void ofxSCGroup::create(int position, int groupID)
 	m.addIntArg(position);
 	m.addIntArg(groupID);
 	
-	server->osc.sendMessage(m);
+	server->sendMsg(m);
 	
 	created = true;
 }

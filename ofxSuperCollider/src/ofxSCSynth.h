@@ -17,7 +17,6 @@
 #include <tr1/unordered_map>
 
 #include "ofxSCNode.h"
-#include "ofxOsc.h"
 
 typedef std::tr1::unordered_map<string, float> dictionary;
 

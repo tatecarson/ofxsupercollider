@@ -18,25 +18,38 @@
 #include "ofxOsc.h"
 #include "ofxSCResourceAllocator.h"
 
+class ofxSCBuffer;
+
+
 class ofxSCServer
 {
 public:	
 	ofxSCServer(string hostname, unsigned int port);
 	~ofxSCServer();
 
-	ofxOscSender osc;
+	static ofxSCServer     *local();
 	
-	static ofxSCServer *local();
-	
+	void process();
 	void notify();
+	
+	void sendMsg(ofxOscMessage& message);
+	void sendBundle(ofxOscBundle& bundle);	
 	
 	ofxSCResourceAllocator *allocatorBusAudio;
 	ofxSCResourceAllocator *allocatorBusControl;
 	ofxSCResourceAllocator *allocatorBuffer;
 	ofxSCResourceAllocator *allocatorSynth;
+
+	ofxSCBuffer *buffers[1024];
 	
 protected:
 
+#ifdef _ofxOscSENDERRECEIVER_H
+	ofxOscSenderReceiver   osc;
+#else
+	ofxOscSender           osc;
+#endif
+	
 	static ofxSCServer *plocal;
 	string hostname;
 	unsigned int port;

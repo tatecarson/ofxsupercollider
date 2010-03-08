@@ -54,7 +54,7 @@ void ofxSCSynth::create(int position, int groupID)
 		b.addMessage(m);
 	}
 
-	server->osc.sendBundle(b);
+	server->sendBundle(b);
 	
 	created = true;
 }
@@ -77,7 +77,7 @@ void ofxSCSynth::set(string arg, float value)
 		m.addStringArg(arg);
 		m.addFloatArg(value);
 		
-		server->osc.sendMessage(m);
+		server->sendMsg(m);
 	}
 }
 
@@ -93,6 +93,6 @@ void ofxSCSynth::set(string arg, int value)
 		m.addStringArg(arg);
 		m.addIntArg(value);
 		
-		server->osc.sendMessage(m);
+		server->sendMsg(m);
 	}
 }

@@ -42,7 +42,7 @@ void ofxSCNode::free()
 	ofxOscMessage m;
 	m.setAddress("/n_free");
 	m.addIntArg(nodeID);
-	server->osc.sendMessage(m);
+	server->sendMsg(m);
 	
 	created = false;
 }
