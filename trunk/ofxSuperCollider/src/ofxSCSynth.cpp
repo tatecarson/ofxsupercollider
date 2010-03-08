@@ -13,12 +13,12 @@
 
 #include "ofxSCSynth.h"
 
-ofxSCSynth::ofxSCSynth(char * n, ofxSCServer *s)
+ofxSCSynth::ofxSCSynth(string name, ofxSCServer *server)
 {
 	ofxSCNode();
 	
-	name = string(n);
-	server = s;
+	this->name = name;
+	this->server = server;
 }
 
 ofxSCSynth::~ofxSCSynth()
@@ -65,7 +65,7 @@ void ofxSCSynth::grain(int position, int groupID)
 	create(position, groupID);
 }
 
-void ofxSCSynth::set(string arg, float value)
+void ofxSCSynth::set(string arg, double value)
 {
 	args.insert(dictionary::value_type(arg, value));
 	

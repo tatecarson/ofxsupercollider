@@ -30,6 +30,7 @@ public:
 	static ofxSCServer     *local();
 	
 	void process();
+	void _process(ofEventArgs &e);
 	void notify();
 	
 	void sendMsg(ofxOscMessage& message);
