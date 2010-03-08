@@ -23,7 +23,7 @@ typedef std::tr1::unordered_map<string, float> dictionary;
 class ofxSCSynth : public ofxSCNode
 {
 public:	
-	ofxSCSynth(char * name = "sine", ofxSCServer *server = ofxSCServer::local());
+	ofxSCSynth(string name = "sine", ofxSCServer *server = ofxSCServer::local());
 	~ofxSCSynth();
 
 	ofxSCSynth (const ofxSCSynth & other) { copy (other); }
@@ -35,7 +35,7 @@ public:
 	void create(int position = 0, int groupID = 1);
 	void grain(int position = 0, int groupID = 1);
 	
-	void set(string arg, float value);
+	void set(string arg, double value);
 	void set(string arg, int value);
 		
 protected:

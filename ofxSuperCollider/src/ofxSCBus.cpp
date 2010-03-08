@@ -32,3 +32,14 @@ ofxSCBus::ofxSCBus(int rate, int channels, ofxSCServer *server)
 		this->index = server->allocatorBusAudio->alloc(this->channels);
 	}
 }
+
+
+void ofxSCBus::free()
+{
+	// nothing is actually allocated server-side,
+	// so all we need to do here is reflect the availability of this address
+	if (this->rate == RATE_CONTROL)
+		server->allocatorBusControl->free(this->index);
+	else
+		server->allocatorBusAudio->free(this->index);
+}

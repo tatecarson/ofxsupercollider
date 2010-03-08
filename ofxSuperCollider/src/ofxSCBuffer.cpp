@@ -26,11 +26,11 @@ ofxSCBuffer::ofxSCBuffer(int frames, int channels, ofxSCServer *server)
 	ready = false;
 }
 
-void ofxSCBuffer::read(char *path)
+void ofxSCBuffer::read(string path)
 {
 	// XXX do we need to strncpy this?
 	// i think so.
-	this->path = path;
+	this->path.assign(path);
 	
 	ofxOscMessage m;
 	m.setAddress("/b_allocRead");

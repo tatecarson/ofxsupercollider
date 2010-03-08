@@ -19,24 +19,20 @@
 
 ofxSCServer *ofxSCServer::plocal = NULL;
 
-/*
-ofxSCServer::ofxSCServer()
-{
-	fprintf(stderr, "OSC setup\n");
-	osc.setup("localhost", 57110);
-//	osc.setup("192.168.1.100", 57110);
-}
- */
-
 ofxSCServer::ofxSCServer(string hostname = "localhost", unsigned int port = 57110)
 {
 	this->hostname = hostname;
 	this->port = port;
 
-#ifdef _ofxOscSENDERRECEIVER_H		
+#ifdef _ofxOscSENDERRECEIVER_H
+	
 	osc.setup(LISTEN_PORT, hostname, port);
+	ofAddListener(ofEvents.draw, this, &ofxSCServer::_process);
+	
 #else
+	
 	osc.setup(hostname, port);
+	
 #endif
 	
 	allocatorBusAudio = new ofxSCResourceAllocator(512);
@@ -63,15 +59,22 @@ ofxSCServer *ofxSCServer::local()
 	return plocal;
 }
 
+// dummy method for oF event notification system
+void ofxSCServer::_process(ofEventArgs &e)
+{
+	this->process();
+}
+
 void ofxSCServer::process()
 {
+	
 #ifdef _ofxOscSENDERRECEIVER_H			
+
 	while(osc.hasWaitingMessages())
 	{
 		ofxOscMessage m;
 		osc.getNextMessage(&m);
 		printf("** got OSC! %s\n", m.getAddress().c_str());
-		
 		
 		/*-----------------------------------------------------------------------------
 		 * /done
@@ -103,9 +106,13 @@ void ofxSCServer::process()
 		{
 		}
 	}
+	
 #else
+	
 	fprintf(stderr, "This version of ofxOsc does not have support for sender/receive objects. Please update to enable receiving responses from SuperCollider.\n");
+	
 #endif
+	
 }
 
 void ofxSCServer::notify()
